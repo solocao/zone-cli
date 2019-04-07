@@ -1,7 +1,3 @@
-#!/usr/bin/env node
-//在顶部添加这句:
-// # !/usr/bin / env node--这种用法是为了防止操作系统用户没有将node装在默认的 / usr / bin路径里。当系统看到这一行的时候，
-// 首先会到env设置里查找node的安装路径，再调用对应路径下的解释器程序完成操作。
 const fs = require('fs');
 const program = require('commander');
 const download = require('download-git-repo');
@@ -26,7 +22,7 @@ program.version('1.0.0', '-v, --version')
       ]).then((answers) => {
         const spinner = ora('正在下载模板...');
         spinner.start();
-        download('github:solocao/zone-cli#master', name, { clone: true }, (err) => {
+        download('direct:https://github.com/solocao/zone-cli/test#master', name, { clone: true }, (err) => {
           if (err) {
             spinner.fail();
             console.log(symbols.error, chalk.red(err));
